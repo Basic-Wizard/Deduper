@@ -57,3 +57,33 @@ High Level Functions:
 
 
 *Paper I read to understand deduplication: https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-017-1471-9
+
+
+
+_________________________________________________________________________________________________________________________________________________________
+Unix:
+Using SAM tools to sort by chromosome would probably be a good start, then you could clear dictionaries between chromosomes to make the script run faster and take up 
+less resources.
+
+Python:
+2. Are you making a single dictionary that contains the Rname, Qname, etc. as a key or does each column get it's own dictionary? It loks like you have each column getting
+it's own dictionary but this would make it impossible to put the reads back together later. If you make one dictionary that uses the Qname as a key with all of the info as
+the value you can search the key and compare associated values.
+
+6. What are you iterating through with a for loop? will you create a dictionary of every read and then iterate through all of the reads looking for soft clipping?
+
+7. Do you mean a for loop with an if statement? where you iterate through the dictionary of all reads and look for matches? Creating a new dictionary to store unique reads
+called matches might be a bit confusing and resource intensive, might be easier to remove duplicates from the initial dictionary or just write straight into the output file.
+Your Psuedocode doesn't say anything about an output file, when are you going to write unique reads into the output file?
+
+Functions:
+It's hard to say how these functions will play into the script with this level of detail, you should think about how each of these functions will work and test inputs with
+expected outputs to test them with. None of these are mentioned in the psudocode saying when and where they will be used, knowing this will make them easier to write.
+
+Unit tests:
+Your unit test input is missing the header lines and has other lines that would not appear in a regular SAM file. All of the reads in this file have the same bitflag value
+and none of them have any soft clipping. Also the column names are inaccurate. You also have no sample output to compare to your actual output to see if your code is working
+properly.
+
+Overall:
+You've got the bare bones but you will need to flesh this out a lot more before you start writing your code.
